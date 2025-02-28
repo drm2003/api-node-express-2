@@ -1,3 +1,4 @@
+// notebook TJDFT
 {
     "[python]": {
         "editor.formatOnType": true
@@ -31,4 +32,84 @@
     "vs-kubernetes": {
         "vs-kubernetes.ignore-recommendations": true
     }
+}
+// computador
+{
+    "workbench.startupEditor": "none",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.ipynb": "jupyter-notebook",
+        "*.tgz": "default"
+    },
+    "git.confirmSync": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "redhat.telemetry.enabled": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "debug.javascript.debugByLinkOptions": "on",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "git.autofetch": true,
+    "editor.largeFileOptimizations": false,
+    "xml.server.vmargs": "-Xmx128M",
+    "workbench.editor.empty.hint": "hidden",
+    "php.validate.executablePath": "",
+    "vs-kubernetes": {
+        "vs-kubernetes.ignore-recommendations": true,
+        "vscode-kubernetes.helm-path-windows": "C:\\Users\\t316048\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
+        "vscode-kubernetes.minikube-path-windows": "C:\\Users\\t316048\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
+        "vscode-kubernetes.helm-path-linux": "/home/t316048/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.minikube-path-linux": "/home/t316048/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vscode-kubernetes.kubectl-path-linux": "/home/t316048/.local/state/vs-kubernetes/tools/kubectl/kubectl"
+    },
+    "terminal.integrated.fontFamily": "monospace",
+    "scm.alwaysShowRepositories": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "editor.linkedEditing": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "git.enableSmartCommit": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "vim.commandLineModeKeyBindings": [],
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "vim.disableExtension": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "rsp-ui.enableStartServerOnActivation": [
+        {
+            "id": "redhat.vscode-server-connector",
+            "name": "JBoss Toolkit",
+            "startOnActivation": true
+        }
+    ],
+    "geminicodeassist.project": "",
 }
