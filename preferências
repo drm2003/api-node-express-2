@@ -1,0 +1,34 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "workbench.settings.applyToAllProfiles": [],
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/bin/bash"
+        }
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.autofetch": true,
+    "makefile.configureOnOpen": false,
+    "redhat.telemetry.enabled": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.ignore-recommendations": true
+    }
+}
