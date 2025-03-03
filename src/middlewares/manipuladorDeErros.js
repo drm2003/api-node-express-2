@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import ErroBase from "../erros/ErroBase.js";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function manipuladorDeErros(erro, req, res, next) {
@@ -15,7 +16,7 @@ function manipuladorDeErros(erro, req, res, next) {
     res.status(400).send({ message: `Os seguintes erros foram encontrados: <br /> ${mensagensErro}` });
 
   } else {
-    res.status(500).send({ message: `Erro interno de servidor. ${erro.message} ` });
+    new ErroBase("Erro interno do servidor", 500).enviarResposta(res);
   }
 }
 
