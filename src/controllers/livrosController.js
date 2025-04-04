@@ -1,27 +1,17 @@
-import RequisicaoIncorreta from "../erros/RequisicaoIncorreta.js";
 import { autores, livros } from "../models/index.js";
 
 class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
-      let { limite = 10, pagina = 1 } = req.query;
+      const buscaLivro = livros.find();
 
-      limite = parseInt(limite);
-      pagina = parseInt(pagina);
+      // armazenando o resultado da busca na requisição
+      // para que possa ser utilizado no middleware de paginação
+      // o resultado é um array de objetos, onde cada objeto representa um livro
+      req.resultado = buscaLivro;
 
-      if (limite > 0 && pagina > 0) {
-        const livrosResultado = await livros.find()
-          .skip((pagina-1) * limite)
-          .limit(limite)
-          .populate("autor")
-          .exec();
-  
-        res.status(200).json(livrosResultado);
-      } else {
-        next(new RequisicaoIncorreta());
-      }
-
+      next();
     } catch (erro) {
       next(erro);
     }
@@ -31,9 +21,9 @@ class LivroController {
     try {
       const id = req.params.id;
 
-      const livroResultados = await livros.findById(id)
-        .populate("autor", "nome")
-        .exec();
+      const livroResultados = await livros
+        .findById(id, {}, { autopopulate: false })
+        .populate("autor");
 
       res.status(200).send(livroResultados);
     } catch (erro) {
@@ -83,11 +73,14 @@ class LivroController {
       const busca = await processaBusca(req.query);
 
       if (busca !== null) {
-        const livrosResultado = await livros
-          .find(busca)
-          .populate("autor");
-  
-        res.status(200).send(livrosResultado);
+        const livrosResultado = livros
+          .find(busca);
+        
+        // armazenando o resultado da busca na requisição
+        // para que possa ser utilizado no middleware de paginação
+        // o resultado é um array de objetos, onde cada objeto representa um livro
+        req.resultado = livrosResultado;
+        next();
       } else{
         res.status(200).send([]);
       }
@@ -109,13 +102,16 @@ async function processaBusca(parametros) {
   // Duas alternativas para trabalhar com o regex
   // const regex = RegExp(titulo, "i");
   // if(titulo) busca.titulo = regex;
+
+  // a opção "i" torna a busca case insensitive
   if(titulo) busca.titulo = { $regex: titulo, $options: "i"};
 
   if(minPaginas) busca.numeroPaginas = { $gte: minPaginas };
   if(maxPaginas) busca.numeroPaginas = { $lte: maxPaginas };
 
-  if(nomeAutor) {
-    const autor = await autores.findOne({ nome: nomeAutor });
+  if (nomeAutor) {
+    const autorRegex = { $regex: nomeAutor, $options: "i" };
+    const autor = await autores.findOne({ nome: autorRegex });
 
     if(autor !== null) {
       const autorId = autor._id;
