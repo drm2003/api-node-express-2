@@ -13,8 +13,10 @@ function manipuladorDeErros(erro, req, res, next) {
   } else if (erro instanceof mongoose.Error.ValidationError) {
     new ErroValidacao(erro).enviarResposta(res);
   } else if (erro instanceof NaoEncontrado) {
+    erro.enviarResposta(res); 
+  } else if (erro instanceof ErroBase) {
     erro.enviarResposta(res);
-  }  else {
+  } else {
     new ErroBase("Erro interno do servidor", 500).enviarResposta(res);
   }
 }
